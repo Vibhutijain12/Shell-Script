@@ -95,3 +95,12 @@ else
         echo "Disk usage is fine: ${usage}%"
 fi
 ```
+
+#### 7. Write a script to find all .txt files in a directory.
+```
+#!/bin/bash 
+
+find . -type f -name "*txt"
+
+```
+
