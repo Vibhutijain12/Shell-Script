@@ -40,3 +40,58 @@ else
         echo "String is not palindrome!!"
 fi
 ```
+
+#### 4. Write a script to find the largest of three numbers.
+```
+#!/bin/bash
+
+a=$1
+b=$2
+c=$3
+
+if [[ $# -ne 3 ]]; then
+        echo "usage of three argument"
+        exit 1
+fi
+
+
+if [[ $a -ge $b && $a -ge $c ]]; then
+        echo "$a is greater than $c"
+elif [[ $b -ge $c && $b -ge $a ]]; then
+        echo "$b is  greater than $c"
+else
+        echo "$c is greater"
+fi
+```
+
+#### 5. Write a script to read a file line by line.
+```
+#!/bin/bash
+
+filename=$1
+
+
+if [[ -z  $filename ]]; then
+        echo "Please provide any filename"
+        exit 1
+fi
+
+while IFS= read -r filename
+do
+        echo "$filename"
+done < $filename
+```
+
+#### 6. Write a script to check disk usage and warn if it exceeds 80%.
+```
+#!/bin/bash
+
+thershold=80
+usage=$(df -h | awk 'NR==2 {print $5}' | cut -b 1,2)
+
+if [ ${usage} -ge ${thershold} ]; then
+        echo "Warning: Disk usage is at ${usage}% on $(hostname)" | mail -s "Disk Alert: $(hostname)" vibhutijain393@gmail.com
+else
+        echo "Disk usage is fine: ${usage}%"
+fi
+```
