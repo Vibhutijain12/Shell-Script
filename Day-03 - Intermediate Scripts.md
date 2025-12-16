@@ -104,3 +104,36 @@ find . -type f -name "*txt"
 
 ```
 
+##### 8. Write a script to search for a word in a file.
+```
+#!/bin/bash
+
+WORD="$1"
+FILE="$2"
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <word> <file>"
+  exit 1
+fi
+
+grep -n "$WORD" "$FILE"
+
+```
+
+#### 9. Write a script to backup a directory into a compressed tar file.
+```
+#!/bin/bash
+
+src_dir=/home/ubuntu/shell_scripts
+dest=/home/ubuntu/backups
+
+time_stamp=$(date "+%Y-%m-%d-%H-%M-%S")
+echo ${time_stamp}
+
+backup_file=${dest}/${time_stamp}.tgz
+echo ${backup_file}
+
+tar -czf ${backup_file} ${src_dir}
+
+echo "Backup completed!!!"
+```
