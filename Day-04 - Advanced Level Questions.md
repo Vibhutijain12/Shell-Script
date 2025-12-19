@@ -44,3 +44,17 @@ else
         echo "$service is UP"
 fi
 ```
+
+##### 4. Write a script to check network connectivity (ping test).
+```
+#!/bin/bash
+
+ping -c 2 google.com > /dev/null
+
+if [ $? -eq 0 ]; then
+        echo "Internet is working"
+else
+        echo "Internet is not working"
+fi
+```
+
