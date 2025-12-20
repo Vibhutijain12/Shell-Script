@@ -57,4 +57,17 @@ else
         echo "Internet is not working"
 fi
 ```
+##### 5. Write a script to parse a CSV file and print selected columns.
+```
+#!/bin/bash
 
+file=$1
+
+if [ $# -ne 1 ]; then
+        echo "Need argument"
+        exit 1
+fi
+
+parse=$(awk -F, '{print $1}' $1)
+echo $parse
+```
