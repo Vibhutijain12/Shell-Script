@@ -93,3 +93,19 @@ do
         ((i++))
 done
 ```
+##### 10. Write a script to calculate the age of a person. 
+```
+#!/bin/bash
+
+read -p "Enter the current year: " curr_year
+read -p "Enter your birth year: " birth_year
+
+if [ -z "$curr_year" ] || [ -z "$birth_year" ]; then
+        echo "Need some input from user side"
+        exit 1
+fi
+
+age_cal=$((curr_year - birth_year))
+
+echo "Your primary age is: ${age_cal}"
+```
