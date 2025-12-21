@@ -97,3 +97,18 @@ done < user.txt
  kill -9 $pid
 ```
 
+##### 8. Reverse a string without using rev command.
+```
+#!/bin/bash
+
+str="HelloWorld"
+reversed=""
+
+# Read one character at a time
+echo "$str" | while IFS= read -r -n1 char
+do
+    reversed="$char$reversed"
+done
+
+echo "$reversed"
+```
