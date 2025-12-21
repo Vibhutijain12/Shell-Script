@@ -137,3 +137,18 @@ tar -czf ${backup_file} ${src_dir}
 
 echo "Backup completed!!!"
 ```
+
+##### 10. Write a script to count a particular word by reading file. 
+```
+#!/bin/bash
+
+while IFS= read -r line;
+do
+        if echo "$line" | grep -q "Yellow";
+        then
+                ((count++))
+        fi
+
+done < color_x11.csv
+echo "Total count is: " $count
+```
