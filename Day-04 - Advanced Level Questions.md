@@ -71,3 +71,29 @@ fi
 parse=$(awk -F, '{print $1}' $1)
 echo $parse
 ```
+##### 6. Write a script to create user accounts in bulk from a file.
+```
+#!/bin/bash
+
+while IFS= read -r user;
+do
+        [ -z "$user" ] && continue
+
+        if id "$user" &>/dev/null
+        then
+                echo "${user} is already exists"
+        else
+                sudo useradd ${user}
+                echo "${user} has created"
+        fi
+done < user.txt
+```
+
+##### 7. Write a script to detect and kill high-memory processes.
+```
+#!/bin/bash
+ ps -aux --sort=-%mem | head -5
+ pid=$(ps -aux --sort=-%mem | awk 'NR==2 {print $2}')
+ kill -9 $pid
+```
+
