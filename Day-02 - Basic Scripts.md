@@ -109,3 +109,24 @@ age_cal=$((curr_year - birth_year))
 
 echo "Your primary age is: ${age_cal}"
 ```
+
+##### 11. Check if a file exists, and if yes, show its size
+```
+#!/bin/bash
+
+file=$1
+
+if [ -z "$file" ]; then
+        echo "Need filename to print size"
+        exit 1
+fi
+
+
+if [ ! -f $file ]; then
+        echo "file doesn't exists"
+else
+        echo "file exists"
+        du -h $file
+fi
+```
+
