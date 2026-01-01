@@ -117,3 +117,42 @@ else
         done
 fi
 
+## Mini Project 4: User Creation Automation
+
+#!/bin/bash
+
+
+file_name=users.txt
+passord_length=12
+
+if [[ $EUID -ne 0 ]]; then
+        echo "To add user in the system, you need root user"
+        exit 1
+fi
+
+echo "You are the root user, you can contiune..."
+
+if [[ ! -f "$file_name" ]]; then
+        echo "File doesn't exists!!!"
+        exit 1
+fi
+
+while IFS= read -r user; do
+        [ -z "$user" ] && contiune
+
+        if id "$user" 2>/dev/null; then
+                echo "$user is already created"
+                continue
+        fi
+
+        password=$(openssl rand -base64 48 | cut -c1-${password_length})
+
+        useradd -m "$user"
+
+#       echo "$user|$password" | chpasswd
+
+#       chage -d 0 "$user"
+
+        echo "User: $USER  Password: $PASSWORD"
+
+done < users.txt
