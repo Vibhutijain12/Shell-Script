@@ -67,3 +67,22 @@ fi
 
 log=$(awk '{print $1}' /var/log/nginx/access.log) | sort | head n -10 
 echo ${log}
+
+## 5. Automating Backup of configuration file
+
+#!/bin/bash
+
+src="/etc"
+dest="/home/ubuntu/etc_backup"
+timestamp=$(date "+%Y-%m-%d-%H:%M:%S")
+
+backup_dir="${dest}/etc-backup-${timestamp}.tar.gz"
+
+tar -czf "${backup_dir}" "${src}"
+
+if [[ $? -eq 0 ]]; then
+        echo "Backup has taken"
+        find "$backup_dir" -type f -name "etc-backup-*.tar.gz" -mtime +7 -exec rm{}\;
+else
+        exit 1
+fi
