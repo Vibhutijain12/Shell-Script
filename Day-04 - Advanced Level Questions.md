@@ -112,3 +112,15 @@ done
 
 echo "$reversed"
 ```
+
+##### 9. Check health  of CPU. 
+```
+#!/bin/bash
+
+cpu_total=100
+
+usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
+
+remaining=$(awk "BEGIN {printf \"%.2f\", $cpu_total - $usage}")
+echo "CPU : $cpu_total% - $usage% = $remaining%"
+```
