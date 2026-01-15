@@ -86,3 +86,19 @@ if [[ $? -eq 0 ]]; then
 else
         exit 1
 fi
+
+## 6. Script of Process Patching
+
+#!/bin/bash
+set -e
+
+LOGFILE="/var/log/patching.log"
+
+echo "Patching started: $(date)" | tee -a $LOGFILE
+
+sudo apt update >> $LOGFILE 2>&1
+sudo apt upgrade -y >> $LOGFILE 2>&1
+sudo apt autoremove -y >> $LOGFILE 2>&1
+
+echo "Patching completed: $(date)" | tee -a $LOGFILE
+
