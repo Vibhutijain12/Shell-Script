@@ -152,3 +152,12 @@ do
 done < color_x11.csv
 echo "Total count is: " $count
 ```
+
+##### 11. Write a script which count a particular letter in a word and print the occurence of the letter. 
+```
+#!/bin/bash
+
+word="mississippi"
+count=$(grep -o "s" <<<"$word" | wc -l)
+echo ${count}
+```
