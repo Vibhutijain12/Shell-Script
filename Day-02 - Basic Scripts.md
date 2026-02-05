@@ -19,7 +19,7 @@ read -p "Enter your name: " name
 echo "Hello,${name}!!!!, Good Morning"
 ```
 
-##### 3. Write a script to add two numbers provided by the .
+##### 3. Write a script to add two numbers provided by the user.
 
 ```
 #!/bin/bash
