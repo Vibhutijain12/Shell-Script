@@ -3,7 +3,7 @@
 1. What is Shell? 
 2. What is Shell Scripting?
 3. Why we use shell scripting? 
-4. Example of shell scripting. 
+4. Example of shell scripting?
 
 #### 1.  What is Shell? 
 A shell is a command-line interface in Unix/Linux systems that:
