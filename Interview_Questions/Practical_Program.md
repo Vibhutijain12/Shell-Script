@@ -69,3 +69,43 @@ vowels_count=$(grep -oi '[aeiou]' <<< "$text" | wc -l)
 
 echo "$vowels_count"
 ```
+
+#### 5. Search for a directory
+
+```sh 
+#!/bin/bash
+
+dir_name="$1"
+
+if [ -z "$dir_name" ]; then
+        echo "String is empty"
+        exit 1
+fi
+
+if [ ! -d "$dir_name" ]; then
+        echo "directory doesn't exists"
+else
+        echo "directory exists"
+fi
+```
+
+```sh
+#!/bin/bash
+
+dir_name="$1"
+
+if [ -z "$dir_name" ]; then
+        echo "Needs an argument, Bye Bye... Try Again!!"
+        exit 1
+fi
+
+result=$(find / -type d -name "$dir_name" 2>/dev/null)
+
+if [ -n "$result" ]; then
+        echo "Directory found"
+        echo "$result"
+else
+        echo "Directory doesn't exist or finding incorrect directory"
+        echo "Try Again!!!"
+fi
+```
