@@ -1,0 +1,71 @@
+#### 1. Add two numbers
+
+```sh 
+#!/bin/bash
+
+num1=$1
+num2=$2
+
+if [ $# -eq 0 ]; then
+        echo "Need an argument to continue"
+        exit 1
+elif [ $# -lt 2 ]; then
+        echo "Needs specified number of argument to continue"
+        exit 1
+else
+        sum=$(( num1 + num2 ))
+        echo ${sum}
+fi
+```
+#### 2. Find the largest of three numbers
+
+```sh 
+#!/bin/bash
+
+num1=$1
+num2=$2
+num3=$3
+
+if [ $# -eq 0 ]; then
+        echo "Something is wrong"
+        exit 1
+fi
+
+if (( num1 >= num2  &&  num1 >= num3 )) ; then
+        echo "${num1} is greater"
+elif (( num2 >= num1 && num2 >= num3 )) ; then
+        echo "${num2} is greater"
+else
+        echo "${num3} is greater"
+fi
+```
+#### 3. Check if a number is even or odd
+
+```sh 
+#!/bin/bash
+
+num=$1
+
+if [ $# -ne 1 ]; then
+        echo "Something is Wrong"
+        echo "Try Again!!!"
+        exit 1
+fi
+
+if (( num % 2 == 0 )); then
+        echo "$num is even"
+else
+        echo "$num is odd"
+fi
+```
+#### 4. Count vowels in a string
+
+```sh 
+#!/bin/bash
+
+text="$1"
+
+vowels_count=$(grep -oi '[aeiou]' <<< "$text" | wc -l)
+
+echo "$vowels_count"
+```
