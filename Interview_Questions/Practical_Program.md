@@ -151,6 +151,8 @@ do
         fi
 
 done < $filename
+
+echo "The total count of parameters is: " $count
 ```
 #### 8. Backup a directory 
 
@@ -168,6 +170,4 @@ backup_dir=${dest_dir}/${timestamp}.tgz
 tar -czf "${backup_dir}" "${src_dir}"
 
 echo "Backup completed!!!"
-```
-echo "The total count of parameters is: " $count
 ```
