@@ -109,3 +109,25 @@ else
         echo "Try Again!!!"
 fi
 ```
+
+#### 6. Calculate factorial
+
+```sh 
+#!/bin/bash
+
+num=$1
+
+fact=1
+temp=$num
+
+if [ $num -lt 0 ]; then
+        echo "can't get the factorial of negative numbers"
+else
+        while [[ $num -gt 1 ]];
+        do
+                fact=$(( fact * num ))
+                num=$(( num - 1 ))
+        done
+        echo "The factorial of ${temp} is: " ${fact}
+fi
+```
