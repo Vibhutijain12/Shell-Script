@@ -151,5 +151,23 @@ do
         fi
 
 done < $filename
+```
+#### 8. Backup a directory 
+
+```sh
+#!/bin/bash
+
+src_dir="/home/vibhuti/scripts"
+dest_dir="/home/vibhuti/backup"
+
+timestamp=$(date +%Y-%m-%d_%H:%S:%M)
+echo ${timestamp}
+
+backup_dir=${dest_dir}/${timestamp}.tgz
+
+tar -czf "${backup_dir}" "${src_dir}"
+
+echo "Backup completed!!!"
+```
 echo "The total count of parameters is: " $count
 ```
