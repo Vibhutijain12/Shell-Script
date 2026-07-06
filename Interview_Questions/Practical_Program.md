@@ -131,3 +131,25 @@ else
         echo "The factorial of ${temp} is: " ${fact}
 fi
 ```
+#### 7. Count words in a file
+
+```sh 
+#!/bin/bash
+
+filename="$1"
+
+if [ -z "$filename" ]; then
+        echo "Need a string to continue"
+        exit 1
+fi
+
+
+while IFS= read -r filename
+do
+        if echo "$filename" | grep -q "failure"; then
+                ((count++))
+        fi
+
+done < $filename
+echo "The total count of parameters is: " $count
+```
