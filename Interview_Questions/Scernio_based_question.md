@@ -90,4 +90,26 @@ do
         fi
 done < rename.txt
 ```
+#### 4. Write a script to monitor a service (e.g., nginx) and restart it if it stops.
 
+```sh
+#!/bin/bash
+
+read -p "Enter the service want to check: " service
+
+target_dir="/home/vibhuti/error.log"
+timestamp=$(date +%Y-%m-%d_%H:%M:%S)
+
+if ! systemctl is-active --quiet ${service}; then
+        echo "$timestamp : ${service} is DOWN, trying to restart" >> "${target_dir}"
+        sudo systemctl restart ${service}
+
+        sleep 2s
+
+        if systemctl is-active --quiet ${service}; then
+             echo "$timestamp : $service was restarted successfully." >> "$target_dir"
+       else
+             echo "$timestamp : CRITICAL - $service failed to restart!" >> "$target_dir"
+       fi
+fi
+```
