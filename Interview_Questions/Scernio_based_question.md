@@ -71,4 +71,23 @@ else
 fi
 ```
 
+#### 3. Rename multiple files with different names
+
+```sh
+#!/bin/bash
+
+while read old new
+do
+        if [[ -f $old ]]; then
+                if [[ ! -e $new ]]; then
+                        mv ${old} ${new}
+                        echo "renaming $old --> $new"
+                else
+                        echo "Skipping: $new already exists."
+                fi
+        else
+                echo "Skipping: $old does not exist."
+        fi
+done < rename.txt
+```
 
