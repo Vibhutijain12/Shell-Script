@@ -113,3 +113,16 @@ if ! systemctl is-active --quiet ${service}; then
        fi
 fi
 ```
+#### 5. Duplicate files in a system
+
+```sh
+#!/bin/bash
+
+
+find "$1" -type f -exec md5sum {} \; | sort | awk '
+          {
+                  if ($1 == prev)
+                  print "Duplicates," $2
+                  prev=$1
+          }'
+```
